@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import childInfo from '../utils/children/index'
+import CaptureVideoEncouragement from './CaptureVideoEncouragement'
 
 const Encourage = () => {
   const [randomChild, setRandomChild] = useState(undefined)
@@ -18,7 +19,7 @@ const Encourage = () => {
     childName = randomChild.name
     childBio = (
       <div className='Bio-Info'>
-        <img src={randomChild.image} />
+        <img src={randomChild.image} alt={`${randomChild.name}'s portrait`} />
         <div>
           Name: {randomChild.name}
         </div>
@@ -41,11 +42,12 @@ const Encourage = () => {
         {childBio}
       </div>
       <div className='Encouragement'>
-        Write an encouraging message to {childName}
-        <textarea className='Encouragement-Text' />
-        <div className='EncouragementCTA'>
-          Send Encouragement
-        </div>
+        <CaptureVideoEncouragement />
+        {/*Write an encouraging message to {childName}*/}
+        {/*<textarea className='Encouragement-Text' />*/}
+        {/*<div className='EncouragementCTA'>*/}
+        {/*  Send Encouragement*/}
+        {/*</div>*/}
       </div>
     </div>
   )
