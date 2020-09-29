@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
 .App {
     text-align: center;
     background-color: #00529e;
@@ -6,34 +11,32 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    max-height: 100vh;
+}
+
+.imgBase {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    border: 2px solid white;
 }
 
 .imgLarge {
-    position: absolute;
     width: 300px;
     height: 300px;
-    border-radius: 50%;
-    display: flex;
+    animation: wiggle 8s infinite alternate;
 }
 
 .imgMedium {
-    position: absolute;
     width: 250px;
     height: 250px;
-    border-radius: 50%;
-    display: flex;
+    animation: wiggle 6s infinite alternate-reverse;
 }
 
 .imgSmall {
-    position: absolute;
     width: 200px;
     height: 200px;
-    border-radius: 50%;
-    display: flex;
-}
-
-.EncouragementCTA {
-
+    animation: wiggle 4s infinite alternate;
 }
 
 .Home {
@@ -42,5 +45,71 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+}
+
+#myCanvas {
+    display: block;
+    background-color: #00529e;
+}
+
+.EncouragementCTA {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    position: absolute;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    border-radius: 10px;
+    color: white;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8);
+    border: 5px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+    background: hsla(260, 100%, 50%, 1);
+    cursor: pointer;
+    outline: 0 !important;
+
+    animation: pulse 1s infinite alternate;
+    transition: background 0.4s, border 0.2s, margin 0.2s;
+}
+
+.EncouragementCTA:hover {
+    background: hsla(220, 100%, 60%, 1);
+    margin-top: -1px;
+
+    animation: none;
+}
+
+.EncouragementCTA:active {
+    border-bottom-width: 0;
+    margin-top: 5px;
+}
+
+@keyframes pulse {
+    0% {
+        margin-top: 0px;
+    }
+    100% {
+        margin-top: 6px;
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    33% {
+        margin-top: 6px;
+        margin-left: 0;
+    }
+    66% {
+        margin-top: 0;
+        margin-left: 6px;
+    }
+    100% {
+        margin-top: 6px;
+        margin-left: 6px;
+    }
 }
