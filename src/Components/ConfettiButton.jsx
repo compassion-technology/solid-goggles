@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { ViewContext } from '../Context/ViewContext'
+import { ENCOURAGE } from '../constants'
 
 const ConfettiButton = () => {
+  const [, setView] = useContext(ViewContext)
+
   // Taken from https://codepen.io/timohausmann/pen/icCer
   window.requestAnimFrame = (function () {
     return window.requestAnimationFrame ||
@@ -52,7 +56,6 @@ const ConfettiButton = () => {
 
     function buttonEffect () {
       const button = document.getElementById('button')
-      button.addEventListener('mousedown', buttonEffect)
       const height = button.offsetHeight
       const left = button.offsetLeft
       const top = button.offsetTop
@@ -89,9 +92,13 @@ const ConfettiButton = () => {
           vs: Math.randMinMax(-4, -1)
         })
       }
+      setTimeout(() => {
+        setView(ENCOURAGE)
+      }, 500)
     }
 
-    window.setTimeout(buttonEffect, 100)
+    const button = document.getElementById('button')
+    button.addEventListener('mousedown', buttonEffect)
 
     loop()
 
