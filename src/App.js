@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react'
+import './App.css'
+import Home from './Components/Home'
+import { ViewContext } from './Context/ViewContext'
+import { ENCOURAGE, HOME, SUCCESS } from './constants'
+import Encourage from './Components/Encourage'
+import Success from './Components/Success'
 
-function App() {
+function App () {
+  const [view] = useContext(ViewContext)
+
+  let content
+  switch (view) {
+    case HOME:
+      content = <Home />
+      break
+    case ENCOURAGE:
+      content = <Encourage />
+      break
+    case SUCCESS:
+      content = <Success />
+      break
+    default:
+      break
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {content}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

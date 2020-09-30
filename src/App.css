@@ -1,38 +1,181 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
 .App {
-  text-align: center;
+    font-family: "Helvetica Neue";
+    text-align: center;
+    background-color: #00529e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.imgBase {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    border: 2px solid white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.imgLarge {
+    width: 300px;
+    height: 300px;
+    animation: wiggle 8s infinite alternate;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.imgMedium {
+    width: 250px;
+    height: 250px;
+    animation: wiggle 6s infinite alternate-reverse;
 }
 
-.App-link {
-  color: #61dafb;
+.imgSmall {
+    width: 200px;
+    height: 200px;
+    animation: wiggle 4s infinite alternate;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Home {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myCanvas {
+    display: block;
+    background-color: #00529e;
+}
+
+.EncouragementCTA {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    width: 200px;
+    border-radius: 10px;
+    color: white;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8);
+    border: 5px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+    background: hsla(260, 100%, 50%, 1);
+    cursor: pointer;
+    outline: 0 !important;
+
+    transition: background 0.4s, border 0.2s, margin 0.2s;
+}
+
+.Home .EncouragementCTA {
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+
+    animation: pulse 1s infinite alternate;
+}
+
+.EncouragementCTA:hover {
+    background: hsla(220, 100%, 60%, 1);
+    margin-top: -1px;
+
+    animation: none;
+}
+
+.EncouragementCTA:active {
+    border-bottom-width: 0;
+    margin-top: 5px;
+}
+
+.Encouragement-View {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Child-Bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 2rem;
+}
+
+.Bio-Info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Bio-Info div {
+    padding: .5rem 0 0 0;
+}
+
+.Encouragement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Encouragement-Text {
+    resize: none;
+    width: 45vw;
+    height: 50vh;
+    font-family: "Helvetica Neue";
+}
+
+.Success-View {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -350px;
+}
+
+.Submit-Button {
+    width: 100px;
+    margin: 0 0 0 0.5rem;
+    cursor: pointer;
+}
+
+.Email-Submission input {
+    margin: 0 0 0 0.5rem;
+}
+
+@keyframes pulse {
+    0% {
+        margin-top: 0px;
+    }
+    100% {
+        margin-top: 6px;
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    33% {
+        margin-top: 6px;
+        margin-left: 0;
+    }
+    66% {
+        margin-top: 0;
+        margin-left: 6px;
+    }
+    100% {
+        margin-top: 6px;
+        margin-left: 6px;
+    }
 }
