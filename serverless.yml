@@ -37,6 +37,7 @@ resources:
         methods: ["GET", "OPTIONS"]
         paths: ["/${opt:stage, self:provider.stage}/encourages/(?<beneficiaryId>[^/]+)"]
         aws_region: "us-east-1"
+        acl_allow: ["Encouragement_API"]
   Outputs:
     Result:
       Value: !GetAtt KongRouteGetResource.Results
