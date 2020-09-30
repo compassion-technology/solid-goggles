@@ -1,9 +1,11 @@
 import React from 'react'
 import Webcam from 'react-webcam'
+import recordIcon from '../photos/record icon.png'
+import stopIcon from '../photos/stop icon.png'
 
 const CaptureVideoEncouragement = () => {
   const webcamRef = React.useRef(null)
-  const mediaRecorderRef = React.useRef({  })
+  const mediaRecorderRef = React.useRef({})
   const [capturing, setCapturing] = React.useState(false)
   const [recordedChunks, setRecordedChunks] = React.useState([])
 
@@ -33,6 +35,7 @@ const CaptureVideoEncouragement = () => {
     setCapturing(false)
   }, [mediaRecorderRef, setCapturing])
 
+  // TODO: If we get storing to S3 working, this will hopefully help
   const handleDownload = React.useCallback(() => {
     if (recordedChunks.length) {
       const blob = new Blob(recordedChunks, {
@@ -52,14 +55,11 @@ const CaptureVideoEncouragement = () => {
 
   return (
     <>
-      <Webcam audio={false} ref={webcamRef} />
+      <Webcam audio={false} ref={webcamRef} style={{ height: '50vh', width: '45vw' }} />
       {capturing ? (
-        <button onClick={handleStopCaptureClick}>Stop Capture</button>
+        <button className='media-button stop' onClick={handleStopCaptureClick}><img alt='stop icon' src={stopIcon} />Stop Capture</button>
       ) : (
-        <button onClick={handleStartCaptureClick}>Start Capture</button>
-      )}
-      {recordedChunks.length > 0 && (
-        <button onClick={handleDownload}>Download</button>
+        <button className='media-button record' onClick={handleStartCaptureClick}><img alt='record icon' src={recordIcon} />Start Capture</button>
       )}
     </>
   )

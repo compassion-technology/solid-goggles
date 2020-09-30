@@ -1,13 +1,5 @@
 import React from 'react'
 import img1 from '../photos/passion-project-img1.jpg'
-import img2 from '../photos/passion-project-img2.jpg'
-import img3 from '../photos/passion-project-img3.jpg'
-import img4 from '../photos/passion-project-img4.jpg'
-import img5 from '../photos/passion-project-img5.jpg'
-import img6 from '../photos/passion-project-img6.jpg'
-import img7 from '../photos/passion-project-img7.jpg'
-import img8 from '../photos/passion-project-img8.jpg'
-import img9 from '../photos/passion-project-img9.jpg'
 import img10 from '../photos/passion-project-img10.jpg'
 import img11 from '../photos/passion-project-img11.jpg'
 import img12 from '../photos/passion-project-img12.jpg'
@@ -18,13 +10,32 @@ import img16 from '../photos/passion-project-img16.jpg'
 import img17 from '../photos/passion-project-img17.jpg'
 import img18 from '../photos/passion-project-img18.jpg'
 import img19 from '../photos/passion-project-img19.jpg'
+import img2 from '../photos/passion-project-img2.jpg'
 import img20 from '../photos/passion-project-img20.jpg'
+import img3 from '../photos/passion-project-img3.jpg'
+import img4 from '../photos/passion-project-img4.jpg'
+import img5 from '../photos/passion-project-img5.jpg'
+import img6 from '../photos/passion-project-img6.jpg'
+import img7 from '../photos/passion-project-img7.jpg'
+import img8 from '../photos/passion-project-img8.jpg'
+import img9 from '../photos/passion-project-img9.jpg'
 import ConfettiButton from './ConfettiButton'
 
 const Home = () => {
 
-  const photos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
+  const orderedPhotos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
     img11, img12, img13, img14, img15, img16, img17, img18, img19, img20]
+
+  const photos = []
+  for (let i = 0; i < 20; i++) {
+    const randIndex = Math.round(Math.random() * (orderedPhotos.length - 1))
+    photos.push(orderedPhotos.slice(randIndex, randIndex + 1)[0])
+    orderedPhotos.splice(randIndex, 1)
+  }
+
+  // Okay so this is horrible but...what happens in hackathon, stays in hackathon -- FBurklin, 2020-09-30
+  // (to be clear, this is ensuring that the 21st image is set to be a duplicate of one that it's both not close to, and shouldn't even be on screen)
+  photos.push(photos[15])
 
   const rings = [
     { count: 6, baseRadius: 300 },
@@ -50,7 +61,7 @@ const Home = () => {
           top: `${centerY - imageClass.size + Math.sin((2 * Math.PI * i / currentRing.count) + angleEntropy) * (currentRing.baseRadius + radiusEntropy)}px`
         }
         images.push(
-          <img className={`imgBase ${imageClass.className}`} src={photos[Math.round(Math.random() * (photos.length - 1))]} style={positionStyle} />
+          <img className={`imgBase ${imageClass.className}`} alt='' src={photos[images.length]} style={positionStyle} />
         )
       }
     }

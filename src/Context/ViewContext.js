@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HOME, SUCCESS } from '../constants'
+import { HOME } from '../constants'
 
 export const ViewContext = React.createContext(null)
 
