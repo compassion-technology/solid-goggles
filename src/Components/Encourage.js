@@ -11,25 +11,39 @@ const Encourage = () => {
   const [encouragementVideoState, setEncouragementVideoState] = useState(false)
   const [hasWebcam, setHasWebcam] = useState(undefined)
   const [, setView] = useContext(ViewContext)
+  const [childVideoURL, setChildVideoURL] = useState(undefined)
 
   useEffect(() => {
     const randomChild = async () => {
       const random = await childInfo.getRandomChild()
-      const childHasVideo = Math.random() < 0.5
-      if (childHasVideo) {
-        random.video = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4'
-      }
       setRandomChild(random)
     }
     randomChild()
   }, [encourageCount])// This seemingly random dependency is to trigger a new random child anytime you click the shuffle button. Such wow.
 
   useEffect(() => {
+    const getVideo = async () => {
+      const headers = {
+        apikey: 'JbpijrCqq6gFgGZ3budiqthBctEQemf4'
+      }
+      // TODO: Not a hardcoded ID
+      const response = await window.fetch(`https://dev.api.cot-refinery.com/dev/encourages/${123456}`, { headers: headers })
+      const body = await response.json()
+      if (body.mp4Urls) {
+        setChildVideoURL(body.mp4Urls[0])
+      }
+    }
+    if (randomChild) {
+      getVideo()
+    }
+  }, [randomChild])
+
+  useEffect(() => {
     function detectWebcam (callback) {
-      let md = navigator.mediaDevices
+      const md = navigator.mediaDevices
       if (!md || !md.enumerateDevices) return callback(false)
       md.enumerateDevices().then(devices => {
-        callback(devices.some(device => 'videoinput' === device.kind))
+        callback(devices.some(device => device.kind === 'videoinput'))
       })
     }
 
@@ -48,11 +62,11 @@ const Encourage = () => {
     childName = randomChild.name
 
     let childBlurb = null
-    if (randomChild.video) {
+    if (childVideoURL) {
       childBlurb = (
         <video controls>
           Your browser asplode
-          <source src={randomChild.video} type='video/mp4' />
+          <source src={childVideoURL} type='video/mp4' />
         </video>)
     } else {
       childBlurb = (<img src={BenPhoto} alt={`${randomChild.name}'s portrait`} />)
@@ -109,7 +123,7 @@ const Encourage = () => {
 
   return (
     <div className='Encouragement-View'>
-      <div className='Child-Bio' style={randomChild && randomChild.video ? { margin: '0 3rem' } : {}}>
+      <div className='Child-Bio' style={childVideoURL ? { margin: '0 3rem' } : {}}>
         {childBio}
       </div>
       <div className='Encouragement'>
