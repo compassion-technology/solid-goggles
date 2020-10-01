@@ -28,7 +28,7 @@ const Success = ({childName}) => {
         <div className='Email-Submission'>
           <label>
             Please provide your email:
-            <input type='email' onChange={(e) => setEmail(e.target.value)} />
+            <input type='email' onChange={(e) => setEmail(e.target.value)} value={email}/>
           </label>
           <button className='Submit-Button' onClick={handleSubmit}>Submit</button>
         </div>
