@@ -24,7 +24,7 @@ const Encourage = () => {
   useEffect(() => {
     const getVideo = async () => {
       const headers = {
-        apikey: 'JbpijrCqq6gFgGZ3budiqthBctEQemf4'
+        apikey: process.env.REACT_APP_API_KEY
       }
       const response = await window.fetch(`https://dev.api.cot-refinery.com/dev/encourages/${randomChild.childId}`, { headers: headers })
       const body = await response.json()
