@@ -61,7 +61,7 @@ const Home = () => {
           top: `${centerY - imageClass.size + Math.sin((2 * Math.PI * i / currentRing.count) + angleEntropy) * (currentRing.baseRadius + radiusEntropy)}px`
         }
         images.push(
-          <img className={`imgBase ${imageClass.className}`} alt='' src={photos[images.length]} style={positionStyle} />
+          <img className={`imgBase ${imageClass.className}`} alt='' src={photos[images.length]} style={positionStyle} key={images.length} />
         )
       }
     }

@@ -57,7 +57,7 @@ body {
     background-color: #00529e;
 }
 
-.EncouragementCTA {
+.view-button {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     font-size: 1.5em;
     text-transform: uppercase;
@@ -75,7 +75,7 @@ body {
     transition: background 0.4s, border 0.2s, margin 0.2s;
 }
 
-.Home .EncouragementCTA {
+.Home .view-button {
     position: absolute;
     left: 50%;
     margin-left: -100px;
@@ -83,14 +83,14 @@ body {
     animation: pulse 1s infinite alternate;
 }
 
-.EncouragementCTA:hover {
+.view-button:hover {
     background: hsla(220, 100%, 60%, 1);
     margin-top: -1px;
 
     animation: none;
 }
 
-.EncouragementCTA:active {
+.view-button:active {
     border-bottom-width: 0;
     margin-top: 5px;
 }
@@ -116,6 +116,7 @@ body {
 .Bio-Info {
     display: flex;
     flex-direction: column;
+    padding: 0.5rem;
 }
 
 .Bio-Info div {
@@ -161,9 +162,7 @@ body {
 }
 
 .Submit-Button {
-    width: 100px;
     margin: 0 0 0 0.5rem;
-    cursor: pointer;
 }
 
 .Email-Submission input {

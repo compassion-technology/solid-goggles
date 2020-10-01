@@ -13,7 +13,7 @@ const Success = () => {
 
   const timeoutBoy = setTimeout(() => {
     goHome()
-  }, 30000000)
+  }, 15000)
 
   return (
     <div>
@@ -26,7 +26,7 @@ const Success = () => {
             Please provide your email:
             <input type='email' />
           </label>
-          <button className='Submit-Button' onClick={goHome}>Submit</button>
+          <button className='Submit-Button view-button' onClick={goHome}>Submit</button>
         </div>
       </div>
     </div>

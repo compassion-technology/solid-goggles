@@ -26,8 +26,7 @@ const Encourage = () => {
       const headers = {
         apikey: 'JbpijrCqq6gFgGZ3budiqthBctEQemf4'
       }
-      // TODO: Not a hardcoded ID
-      const response = await window.fetch(`https://dev.api.cot-refinery.com/dev/encourages/${123456}`, { headers: headers })
+      const response = await window.fetch(`https://dev.api.cot-refinery.com/dev/encourages/${randomChild.childId}`, { headers: headers })
       const body = await response.json()
       if (body.mp4Urls) {
         setChildVideoURL(body.mp4Urls[0])
@@ -103,7 +102,7 @@ const Encourage = () => {
       <>
         <h1>Record an encouraging message to {childName}</h1>
         <CaptureVideoEncouragement />
-        <div className='EncouragementCTA' onClick={handleSendEncouragement}>
+        <div className='view-button' onClick={handleSendEncouragement}>
           Send Encouragement
         </div>
       </>
@@ -114,7 +113,7 @@ const Encourage = () => {
       <>
         <h1>Write an encouraging message to {childName}!</h1>
         <textarea className='Encouragement-Text' />
-        <div className='EncouragementCTA' onClick={handleSendEncouragement}>
+        <div className='view-button' onClick={handleSendEncouragement}>
           Send Encouragement
         </div>
       </>
