@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react'
-import axios from 'axios';
 import { ViewContext } from '../Context/ViewContext'
 import { HOME } from '../constants'
 import Confetti from './Confetti'
@@ -10,7 +9,7 @@ const Success = ({childName}) => {
 
   const handleSubmit = () => {
     //send thank you email
-    axios.get(`https://us-central1-email-api-548d6.cloudfunctions.net/sendEmail?dest=${email}&child=${childName}`)
+    window.fetch(`https://us-central1-email-api-548d6.cloudfunctions.net/sendEmail?dest=${email}&child=${childName}`)
     clearTimeout(timeoutBoy)
     setView(HOME)
   }
