@@ -4,13 +4,13 @@ import { ViewContext } from '../Context/ViewContext'
 import { HOME } from '../constants'
 import Confetti from './Confetti'
 
-const Success = () => {
+const Success = ({childName}) => {
   const [, setView] = useContext(ViewContext)
   const [email, setEmail] = useState('')
 
   const handleSubmit = () => {
     //send thank you email
-    axios.get(`https://us-central1-email-api-548d6.cloudfunctions.net/sendEmail?dest=${email}`)
+    axios.get(`https://us-central1-email-api-548d6.cloudfunctions.net/sendEmail?dest=${email}&child=${childName}`)
     clearTimeout(timeoutBoy)
     setView(HOME)
   }
