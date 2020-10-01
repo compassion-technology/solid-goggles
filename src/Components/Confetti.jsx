@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const Confetti = () => {
+const Confetti = React.memo(() => {
 
   // Taken from https://codepen.io/timohausmann/pen/icCer
   window.requestAnimFrame = (function () {
@@ -164,6 +164,6 @@ const Confetti = () => {
   return (
     <canvas id='myCanvas' width='500' height='500' />
   )
-}
+})
 
 export default Confetti

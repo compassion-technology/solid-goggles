@@ -1,18 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
+import axios from 'axios';
 import { ViewContext } from '../Context/ViewContext'
 import { HOME } from '../constants'
 import Confetti from './Confetti'
 
 const Success = () => {
   const [, setView] = useContext(ViewContext)
+  const [email, setEmail] = useState('')
 
-  const goHome = () => {
+  const handleSubmit = () => {
+    //send thank you email
+    axios.get(`https://us-central1-email-api-548d6.cloudfunctions.net/sendEmail?dest=${email}`)
     clearTimeout(timeoutBoy)
     setView(HOME)
   }
 
   const timeoutBoy = setTimeout(() => {
-    goHome()
+    handleSubmit()
   }, 30000000)
 
   return (
@@ -24,9 +28,9 @@ const Success = () => {
         <div className='Email-Submission'>
           <label>
             Please provide your email:
-            <input type='email' />
+            <input type='email' onChange={(e) => setEmail(e.target.value)} />
           </label>
-          <button className='Submit-Button' onClick={goHome}>Submit</button>
+          <button className='Submit-Button' onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     </div>
