@@ -24,7 +24,7 @@ const Success = () => {
         <div className='Email-Submission'>
           <label>
             Please provide your email:
-            <input type='email' />
+            <input className='email-field' type='email' />
           </label>
           <button className='Submit-Button view-button' onClick={goHome}>Submit</button>
         </div>
