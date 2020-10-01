@@ -30,6 +30,8 @@ const Encourage = () => {
       const body = await response.json()
       if (body.mp4Urls) {
         setChildVideoURL(body.mp4Urls[0])
+      } else {
+        setChildVideoURL(null)
       }
     }
     if (randomChild) {
