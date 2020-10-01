@@ -13,7 +13,7 @@ const Success = () => {
 
   const timeoutBoy = setTimeout(() => {
     goHome()
-  }, 15000)
+  }, 20000)
 
   return (
     <div>
