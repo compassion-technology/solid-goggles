@@ -1,19 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { ViewContext } from '../Context/ViewContext'
 import { HOME } from '../constants'
 import Confetti from './Confetti'
 
-const Success = () => {
+const Success = ({childName}) => {
   const [, setView] = useContext(ViewContext)
+  const [email, setEmail] = useState('')
 
-  const goHome = () => {
+  const handleSubmit = () => {
+    //send thank you email
+    window.fetch(`https://us-central1-email-api-548d6.cloudfunctions.net/sendEmail?dest=${email}&child=${childName}`)
     clearTimeout(timeoutBoy)
     setView(HOME)
   }
 
   const timeoutBoy = setTimeout(() => {
-    goHome()
-  }, 20000)
+    handleSubmit()
+  }, 30000000)
 
   return (
     <div>
@@ -24,9 +27,9 @@ const Success = () => {
         <div className='Email-Submission'>
           <label>
             Please provide your email:
-            <input className='email-field' type='email' />
+            <input type='email' onChange={(e) => setEmail(e.target.value)} value={email}/>
           </label>
-          <button className='Submit-Button view-button' onClick={goHome}>Submit</button>
+          <button className='Submit-Button' onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     </div>

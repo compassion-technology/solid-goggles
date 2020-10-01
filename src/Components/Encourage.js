@@ -5,9 +5,8 @@ import BenPhoto from '../photos/Beneficiary Picture.jpg'
 import childInfo from '../utils/children/index'
 import CaptureVideoEncouragement from './CaptureVideoEncouragement'
 
-const Encourage = () => {
+const Encourage = ({randomChild, setRandomChild}) => {
   const [encourageCount, setEncourageCount] = useState(0)
-  const [randomChild, setRandomChild] = useState(undefined)
   const [encouragementVideoState, setEncouragementVideoState] = useState(false)
   const [hasWebcam, setHasWebcam] = useState(undefined)
   const [, setView] = useContext(ViewContext)
@@ -19,7 +18,7 @@ const Encourage = () => {
       setRandomChild(random)
     }
     randomChild()
-  }, [encourageCount])// This seemingly random dependency is to trigger a new random child anytime you click the shuffle button. Such wow.
+  }, [encourageCount, setRandomChild])// This seemingly random dependency is to trigger a new random child anytime you click the shuffle button. Such wow.
 
   useEffect(() => {
     const getVideo = async () => {
