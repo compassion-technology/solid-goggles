@@ -168,7 +168,7 @@ const ConfettiButton = () => {
   })
   return (
     <>
-      <button className='EncouragementCTA' id='button'>
+      <button className='view-button' id='button'>
         ENCOURAGE A CHILD
       </button>
       <canvas id='myCanvas' width='500' height='500' />
